@@ -36,7 +36,11 @@
 /* ---------- 2. Base ---------- */
 
 * { box-sizing: border-box; }
-html { scroll-behavior: smooth; }
+html {
+  scroll-behavior: smooth;
+  overflow-x: hidden;
+  width: 100%;
+}
 
 body {
   margin: 0;
@@ -93,6 +97,7 @@ button, select, input, textarea { font-family: inherit; }
   inset: 0;
   z-index: -2;
   pointer-events: none;
+  overflow: hidden;
 }
 
 .bg-grid {
@@ -219,14 +224,6 @@ button, select, input, textarea { font-family: inherit; }
   padding-top: 80px;
 }
 
-#hero-canvas {
-  position: absolute;
-  inset: 0;
-  width: 100%;
-  height: 100%;
-  opacity: 0.6;
-}
-
 .hero-inner {
   position: relative;
   z-index: 2;
@@ -234,6 +231,26 @@ button, select, input, textarea { font-family: inherit; }
   margin: 0 auto;
   padding: 0 var(--gutter);
   width: 100%;
+}
+
+.hero-grid {
+  display: grid;
+  grid-template-columns: 1.15fr 0.85fr;
+  gap: 40px;
+  align-items: center;
+}
+
+.hero-visual {
+  position: relative;
+  aspect-ratio: 1 / 1;
+  width: 100%;
+  max-width: 460px;
+  margin-left: auto;
+}
+
+.hero-visual canvas {
+  width: 100%;
+  height: 100%;
 }
 
 .eyebrow {
@@ -631,6 +648,83 @@ section {
 
 .equation--wide { margin-top: 64px; }
 
+/* ---------- 15b. Why Enavio (principles) ---------- */
+
+.principle-list {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 48px;
+}
+
+.principle {
+  padding-top: 24px;
+  border-top: 1px solid var(--border-strong);
+}
+
+.principle-num {
+  display: block;
+  font-size: 0.85rem;
+  color: var(--accent);
+  margin-bottom: 20px;
+}
+
+.principle h3 {
+  font-size: 1.2rem;
+  margin-bottom: 12px;
+}
+
+.principle p {
+  font-size: 0.96rem;
+  max-width: 34ch;
+}
+
+/* ---------- 15c. Founder (quiet, text-only — no photo) ---------- */
+
+.founder {
+  padding-top: clamp(56px, 7vw, 96px);
+  padding-bottom: clamp(56px, 7vw, 96px);
+}
+
+.founder-layout {
+  max-width: 640px;
+}
+
+.founder-name {
+  display: block;
+  font-family: var(--serif, var(--font));
+  font-size: 1.1rem;
+  color: var(--text);
+}
+
+.founder-title {
+  display: block;
+  font-size: 0.88rem;
+  color: var(--text-muted);
+  margin-top: 4px;
+  margin-bottom: 20px;
+}
+
+.founder-statement {
+  font-size: 0.98rem;
+  max-width: 52ch;
+}
+
+.footer-brand .founder-credit {
+  margin-top: 8px;
+  font-size: 0.85rem;
+  color: var(--text-faint);
+}
+
+/* ---------- 15c. Final CTA actions ---------- */
+
+.final-cta-actions {
+  display: flex;
+  gap: 16px;
+  justify-content: center;
+  flex-wrap: wrap;
+  margin-top: 40px;
+}
+
 /* ---------- 16. Final CTA ---------- */
 
 .final-cta {
@@ -804,6 +898,9 @@ section {
 /* ---------- 21. Responsive ---------- */
 
 @media (max-width: 1023px) {
+  .principle-list { grid-template-columns: 1fr; gap: 32px; }
+  .hero-grid { grid-template-columns: 1fr; }
+  .hero-visual { max-width: 320px; margin: 40px auto 0; }
   .section-head { grid-template-columns: 1fr; gap: 20px; }
   .service-row { grid-template-columns: 40px 1fr; }
   .service-visual, .service-arrow { display: none; }

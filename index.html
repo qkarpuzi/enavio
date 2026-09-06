@@ -36,6 +36,7 @@
       <a href="#solutions">Solutions</a>
       <a href="#technology">Technology</a>
       <a href="#process">Approach</a>
+      <a href="#work">Work</a>
       <a href="#about">About</a>
     </nav>
 
@@ -51,16 +52,20 @@
 
   <!-- ============ HERO ============ -->
   <section class="hero" id="hero">
-    <canvas id="hero-canvas" aria-hidden="true"></canvas>
+    <div class="hero-inner hero-grid">
+      <div class="hero-copy">
+        <span class="eyebrow reveal">Enavio AI — AI Engineering</span>
+        <h1 class="reveal">Engineering<br>Intelligence.</h1>
+        <p class="hero-statement reveal">We design and build intelligent systems for problems that traditional software cannot solve.</p>
 
-    <div class="hero-inner">
-      <span class="eyebrow reveal">Enavio AI — AI Engineering</span>
-      <h1 class="reveal">Engineering<br>Intelligence.</h1>
-      <p class="hero-statement reveal">We design and build intelligent systems for problems that traditional software cannot solve.</p>
+        <div class="hero-actions reveal">
+          <a href="#contact" class="btn btn-primary magnetic">Start a Project →</a>
+          <a href="#about" class="btn btn-ghost magnetic">Explore Enavio ↓</a>
+        </div>
+      </div>
 
-      <div class="hero-actions reveal">
-        <a href="#contact" class="btn btn-primary magnetic">Start a Project →</a>
-        <a href="#about" class="btn btn-ghost magnetic">Explore Enavio →</a>
+      <div class="hero-visual reveal" aria-hidden="true">
+        <canvas id="node-orb"></canvas>
       </div>
     </div>
 
@@ -281,6 +286,34 @@
     </div>
   </section>
 
+  <!-- ============ WHY ENAVIO ============ -->
+  <section class="why reveal-section" id="why">
+    <div class="container">
+      <div class="section-head reveal">
+        <h2>Technology should solve problems.</h2>
+        <p>We start with the problem, not the trend.</p>
+      </div>
+
+      <div class="principle-list">
+        <div class="principle reveal">
+          <span class="principle-num">01</span>
+          <h3>Problem first</h3>
+          <p>Understand the actual need before choosing the technology.</p>
+        </div>
+        <div class="principle reveal">
+          <span class="principle-num">02</span>
+          <h3>Engineering over hype</h3>
+          <p>Build systems that work in the real world, not just in a demo.</p>
+        </div>
+        <div class="principle reveal">
+          <span class="principle-num">03</span>
+          <h3>Long-term thinking</h3>
+          <p>Create technology that can evolve with the organization.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
   <!-- ============ ABOUT ============ -->
   <section class="about reveal-section" id="about">
     <div class="container about-layout">
@@ -301,24 +334,31 @@
     </div>
   </section>
 
+  <!-- ============ FOUNDER ============ -->
+  <section class="founder reveal-section" id="founder">
+    <div class="container founder-layout">
+      <span class="founder-name reveal">Qefser Karpuzi</span>
+      <span class="founder-title reveal">Founder, Enavio AI</span>
+      <p class="founder-statement reveal">Enavio AI was founded by Qefser Karpuzi with a focus on building intelligent software systems and engineering practical applications of artificial intelligence.</p>
+    </div>
+  </section>
+
   <!-- ============ PHILOSOPHY ============ -->
   <section class="philosophy reveal-section" id="philosophy">
     <div class="container">
-      <h2 class="reveal">AI is not the product.</h2>
-      <p class="philosophy-copy reveal">The real product is the system built around it.</p>
+      <h2 class="reveal">We don't build AI for the sake of AI.</h2>
+      <p class="philosophy-copy reveal">We build intelligence around problems worth solving.</p>
 
-      <div class="equation equation--wide reveal" aria-label="Model plus Data plus Tools plus Workflows plus Software equals Intelligent System">
-        <span>MODEL</span>
+      <div class="equation equation--wide reveal" aria-label="Problem plus Data plus Intelligence plus Engineering equals System">
+        <span>PROBLEM</span>
         <span class="equation-op">+</span>
         <span>DATA</span>
         <span class="equation-op">+</span>
-        <span>TOOLS</span>
+        <span>INTELLIGENCE</span>
         <span class="equation-op">+</span>
-        <span>WORKFLOWS</span>
-        <span class="equation-op">+</span>
-        <span>SOFTWARE</span>
+        <span>ENGINEERING</span>
         <span class="equation-line" aria-hidden="true"></span>
-        <span class="equation-result">INTELLIGENT SYSTEM</span>
+        <span class="equation-result">SYSTEM</span>
       </div>
     </div>
   </section>
@@ -329,7 +369,10 @@
     <div class="container final-cta-inner">
       <h2 class="reveal">Have a problem worth solving?</h2>
       <p class="reveal">Let's engineer the intelligence behind it.</p>
-      <a href="#contact" class="btn btn-primary magnetic reveal">Start a Project →</a>
+      <div class="final-cta-actions reveal">
+        <a href="#contact" class="btn btn-primary magnetic">Start a Project →</a>
+        <a href="#contact" class="btn btn-ghost magnetic">Talk to Enavio →</a>
+      </div>
     </div>
   </section>
 
@@ -399,11 +442,14 @@
     <div class="footer-brand">
       <span class="logo">ENAVIO AI</span>
       <p>Engineering Intelligence.</p>
+      <p class="founder-credit">Qefser Karpuzi — Founder &amp; CEO</p>
     </div>
 
     <nav class="footer-links" aria-label="Footer">
       <a href="#solutions">Solutions</a>
       <a href="#technology">Technology</a>
+      <a href="#process">Approach</a>
+      <a href="#work">Work</a>
       <a href="#about">About</a>
       <a href="#contact">Contact</a>
     </nav>
@@ -421,5 +467,6 @@
 </footer>
 
 <script src="script.js"></script>
+<script type="module" src="brain-scene.js"></script>
 </body>
 </html>

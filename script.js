@@ -199,15 +199,6 @@
   function initNetworks() {
     if (prefersReducedMotion) return;
 
-    var heroCanvas = document.getElementById("hero-canvas");
-    var heroNet = createNetwork(heroCanvas, {
-      count: 55,
-      mobileCount: 24,
-      connect: 130,
-      mobileConnect: 95,
-      mouseReact: true
-    });
-
     var ctaCanvas = document.getElementById("cta-canvas");
     var ctaNet = createNetwork(ctaCanvas, {
       count: 30,
@@ -218,24 +209,212 @@
     });
 
     // pause off-screen networks to save CPU
-    if ("IntersectionObserver" in window) {
-      [heroNet, ctaNet].forEach(function (net) {
-        if (!net) return;
-        var section = net.canvas.closest("section");
-        if (!section) return;
-
+    if ("IntersectionObserver" in window && ctaNet) {
+      var section = ctaNet.canvas.closest("section");
+      if (section) {
         var obs = new IntersectionObserver(function (entries) {
           entries.forEach(function (entry) {
             if (entry.isIntersecting) {
-              net.start();
+              ctaNet.start();
             } else {
-              net.stop();
+              ctaNet.stop();
             }
           });
         });
         obs.observe(section);
+      }
+    }
+  }
+
+  /* ---------- 3D node-network orb (hero) ---------- */
+  /* Real 3D points rotated in space and perspective-projected
+     to 2D each frame — an abstract network structure, not a
+     flat particle field. Distance/connections computed in 3D. */
+
+  function createNodeOrb(canvas) {
+    if (!canvas) return;
+
+    var ctx = canvas.getContext("2d");
+    var width, height, cx, cy;
+    var isMobile = window.innerWidth < 768;
+    var nodeCount = isMobile ? 26 : 44;
+    var radius = 1;
+    var connectDist = 0.85;
+    var fov = 2.6;
+
+    var nodes = [];
+    var rotY = 0;
+    var rotX = 0.25;
+    var targetRotY = 0;
+    var targetRotX = 0.25;
+    var animationId = null;
+    var active = true;
+
+    // Fibonacci sphere distribution — evenly spaced points on a sphere
+    function seed() {
+      nodes = [];
+      var offset = 2 / nodeCount;
+      var increment = Math.PI * (3 - Math.sqrt(5));
+
+      for (var i = 0; i < nodeCount; i++) {
+        var y = i * offset - 1 + offset / 2;
+        var r = Math.sqrt(Math.max(0, 1 - y * y));
+        var phi = i * increment;
+
+        nodes.push({
+          x: Math.cos(phi) * r * radius,
+          y: y * radius,
+          z: Math.sin(phi) * r * radius
+        });
+      }
+    }
+
+    function resize() {
+      width = canvas.width = canvas.offsetWidth * window.devicePixelRatio;
+      height = canvas.height = canvas.offsetHeight * window.devicePixelRatio;
+      cx = width / 2;
+      cy = height / 2;
+    }
+
+    function project(p) {
+      // rotate around Y axis
+      var cosY = Math.cos(rotY), sinY = Math.sin(rotY);
+      var x1 = p.x * cosY - p.z * sinY;
+      var z1 = p.x * sinY + p.z * cosY;
+
+      // rotate around X axis
+      var cosX = Math.cos(rotX), sinX = Math.sin(rotX);
+      var y1 = p.y * cosX - z1 * sinX;
+      var z2 = p.y * sinX + z1 * cosX;
+
+      var scale = fov / (fov + z2);
+      var scaleUnit = Math.min(width, height) * 0.34;
+
+      return {
+        x: cx + x1 * scaleUnit * scale,
+        y: cy + y1 * scaleUnit * scale,
+        z: z2,
+        scale: scale
+      };
+    }
+
+    function draw() {
+      ctx.clearRect(0, 0, width, height);
+
+      var projected = nodes.map(project);
+
+      // connecting lines — computed from original 3D distance
+      for (var a = 0; a < nodes.length; a++) {
+        for (var b = a + 1; b < nodes.length; b++) {
+          var dx = nodes[a].x - nodes[b].x;
+          var dy = nodes[a].y - nodes[b].y;
+          var dz = nodes[a].z - nodes[b].z;
+          var dist = Math.sqrt(dx * dx + dy * dy + dz * dz);
+
+          if (dist < connectDist) {
+            var pa = projected[a], pb = projected[b];
+            var depthAvg = (pa.scale + pb.scale) / 2;
+            var opacity = (1 - dist / connectDist) * 0.5 * depthAvg;
+
+            ctx.beginPath();
+            ctx.moveTo(pa.x, pa.y);
+            ctx.lineTo(pb.x, pb.y);
+            ctx.strokeStyle = "rgba(79, 209, 232, " + opacity.toFixed(3) + ")";
+            ctx.lineWidth = Math.max(0.6, depthAvg) * window.devicePixelRatio;
+            ctx.stroke();
+          }
+        }
+      }
+
+      // nodes — sorted back-to-front so near ones draw on top
+      projected
+        .slice()
+        .sort(function (p1, p2) { return p1.z - p2.z; })
+        .forEach(function (p) {
+          var r = Math.max(1.4, 3.2 * p.scale) * window.devicePixelRatio;
+          var opacity = 0.35 + p.scale * 0.5;
+
+          ctx.beginPath();
+          ctx.arc(p.x, p.y, r, 0, Math.PI * 2);
+          ctx.fillStyle = "rgba(242, 241, 237, " + Math.min(opacity, 1).toFixed(3) + ")";
+          ctx.fill();
+        });
+
+      // slow autorotation, gently eased toward mouse-influenced target
+      targetRotY += 0.0016;
+      rotY += (targetRotY - rotY) * 0.05;
+      rotX += (targetRotX - rotX) * 0.05;
+
+      if (active) animationId = requestAnimationFrame(draw);
+    }
+
+    function start() {
+      active = true;
+      if (!animationId) draw();
+    }
+
+    function stop() {
+      active = false;
+      cancelAnimationFrame(animationId);
+      animationId = null;
+    }
+
+    resize();
+    seed();
+    start();
+
+    window.addEventListener(
+      "resize",
+      function () {
+        isMobile = window.innerWidth < 768;
+        resize();
+      },
+      { passive: true }
+    );
+
+    // subtle mouse-driven tilt — the orb leans toward the cursor
+    if (!isTouchDevice) {
+      canvas.parentElement.addEventListener("mousemove", function (e) {
+        var rect = canvas.getBoundingClientRect();
+        var nx = (e.clientX - rect.left) / rect.width - 0.5;
+        var ny = (e.clientY - rect.top) / rect.height - 0.5;
+        targetRotX = 0.25 + ny * 0.5;
+        targetRotY += nx * 0.002;
       });
     }
+
+    if ("IntersectionObserver" in window) {
+      var obs = new IntersectionObserver(function (entries) {
+        entries.forEach(function (entry) {
+          if (entry.isIntersecting) start();
+          else stop();
+        });
+      });
+      obs.observe(canvas.closest(".hero"));
+    }
+  }
+
+  // Exposed so brain-scene.js can fall back to this procedural orb
+  // if WebGL is unavailable or the 3D model fails to load.
+  window.EnavioFallbackOrb = createNodeOrb;
+
+  function initNodeOrb() {
+    var canvas = document.getElementById("node-orb");
+    if (!canvas) return;
+
+    // Reduced motion: draw one cheap static frame and stop —
+    // the animated brain scene never loads in this case either.
+    if (prefersReducedMotion) {
+      var ctx = canvas.getContext("2d");
+      canvas.width = canvas.offsetWidth;
+      canvas.height = canvas.offsetHeight;
+      ctx.strokeStyle = "rgba(79, 209, 232, 0.3)";
+      ctx.beginPath();
+      ctx.arc(canvas.width / 2, canvas.height / 2, canvas.width * 0.3, 0, Math.PI * 2);
+      ctx.stroke();
+    }
+
+    // Otherwise: leave the canvas for brain-scene.js to render into.
   }
 
   /* ---------- Timeline scroll progress ---------- */
@@ -370,6 +549,7 @@
     initMobileMenu();
     initScrollReveal();
     initNetworks();
+    initNodeOrb();
     initTimeline();
     initMagneticButtons();
     initCursorSpotlight();
