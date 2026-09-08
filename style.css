@@ -524,6 +524,20 @@ section {
 .case-content h3 { font-size: 1.4rem; margin-bottom: 10px; }
 .case-content p { font-size: 0.98rem; max-width: 52ch; }
 
+.case-tag--progress { color: var(--text-muted); }
+
+.case-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  margin-top: 18px;
+  font-size: 0.88rem;
+  color: var(--accent);
+  border-bottom: 1px solid transparent;
+  transition: border-color var(--t-fast);
+}
+.case-link:hover { border-bottom-color: var(--accent); }
+
 /* ---------- 14. About tags / Philosophy equation ---------- */
 
 .about-layout {
