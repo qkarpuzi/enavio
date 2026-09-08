@@ -3,10 +3,10 @@
    1. Variables   2. Base   3. Background system   4. Buttons
    5. Navbar   6. Hero   7. Sections/rhythm   8. Impact
    9. Services   10. Architecture   11. Technology
-   12. Process/timeline   13. Case studies   14. Metrics
-   15. About/Philosophy equations   16. Final CTA   17. Contact
-   18. Footer   19. Reveal   20. Cursor   21. Responsive
-   22. Reduced motion
+   12. Process/timeline   13. Case studies (What we build)
+   14. About tags / Philosophy equation   15. Final CTA
+   16. Contact   17. Footer   18. Reveal   19. Cursor
+   20. Responsive   21. Reduced motion
    ========================================================== */
 
 /* ---------- 1. Variables ---------- */
@@ -26,6 +26,7 @@
   --font: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
 
   --gutter: clamp(24px, 6vw, 96px);
+  --nav-gutter: clamp(20px, 3vw, 48px);
   --max-w: 1280px;
   --section-pad: clamp(80px, 11vw, 160px);
   --ease: cubic-bezier(0.16, 1, 0.3, 1);
@@ -168,9 +169,14 @@ button, select, input, textarea { font-family: inherit; }
 }
 
 .navbar-inner {
-  max-width: var(--max-w);
-  margin: 0 auto;
-  padding: 0 var(--gutter);
+  /* Full viewport width — NOT capped at --max-w like the content
+     sections. On wide screens, capping this at 1280px and centering
+     it left big dead margins on both sides of the navbar, making
+     the logo/CTA sit far from the real edges of the window. */
+  width: 100%;
+  max-width: none;
+  margin: 0;
+  padding: 0 var(--nav-gutter);
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -180,6 +186,7 @@ button, select, input, textarea { font-family: inherit; }
   font-size: 0.98rem;
   font-weight: 700;
   letter-spacing: 0.04em;
+  flex-shrink: 0;
 }
 
 .nav-links { display: flex; gap: 40px; }
@@ -191,7 +198,7 @@ button, select, input, textarea { font-family: inherit; }
 }
 .nav-links a:hover { color: var(--text); }
 
-.nav-cta { padding: 10px 20px; font-size: 0.86rem; }
+.nav-cta { padding: 10px 20px; font-size: 0.86rem; flex-shrink: 0; }
 
 .menu-toggle {
   display: none;
@@ -278,34 +285,6 @@ button, select, input, textarea { font-family: inherit; }
   gap: 16px;
   margin-top: 46px;
   flex-wrap: wrap;
-}
-
-.hero-labels {
-  position: absolute;
-  inset: 0;
-  z-index: 2;
-  pointer-events: none;
-}
-
-.hero-label {
-  position: absolute;
-  left: var(--x);
-  top: var(--y);
-  font-size: 0.72rem;
-  letter-spacing: 0.08em;
-  color: var(--text-faint);
-  opacity: 0;
-  animation: label-fade 8s ease-in-out infinite;
-}
-
-.hero-label:nth-child(1) { animation-delay: 0.5s; }
-.hero-label:nth-child(2) { animation-delay: 2.5s; }
-.hero-label:nth-child(3) { animation-delay: 4.5s; }
-.hero-label:nth-child(4) { animation-delay: 6.5s; }
-
-@keyframes label-fade {
-  0%, 85%, 100% { opacity: 0; }
-  10%, 70% { opacity: 1; }
 }
 
 /* ---------- 7. Section rhythm ---------- */
@@ -523,34 +502,17 @@ section {
 .timeline-step h3 { font-size: 1.15rem; margin-bottom: 10px; }
 .timeline-step p { font-size: 0.96rem; max-width: 48ch; }
 
-/* ---------- 13. Case studies ---------- */
+/* ---------- 13. What we build ---------- */
 
 .case-list { display: flex; flex-direction: column; }
 
 .case-row {
-  display: grid;
-  grid-template-columns: 200px 1fr;
-  gap: 48px;
-  padding: 48px 0;
+  padding: 40px 0;
   border-top: 1px solid var(--border);
-  align-items: center;
   transition: background var(--t-med);
 }
 .case-list .case-row:last-child { border-bottom: 1px solid var(--border); }
 .case-row:hover { background: var(--surface); }
-
-.case-visual {
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  gap: 6px;
-  height: 110px;
-}
-
-.case-visual span {
-  border: 1px solid var(--border-strong);
-  border-radius: 4px;
-  background: var(--surface-2);
-}
 
 .case-tag {
   font-size: 0.8rem;
@@ -562,34 +524,7 @@ section {
 .case-content h3 { font-size: 1.4rem; margin-bottom: 10px; }
 .case-content p { font-size: 0.98rem; max-width: 52ch; }
 
-/* ---------- 14. Metrics ---------- */
-
-.metrics-grid {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 40px;
-}
-
-.metric {
-  display: flex;
-  flex-direction: column;
-  gap: 12px;
-  padding-top: 24px;
-  border-top: 1px solid var(--border-strong);
-}
-
-.metric-label {
-  font-size: 0.85rem;
-  color: var(--accent);
-  letter-spacing: 0.04em;
-}
-
-.metric-value {
-  font-size: 1.15rem;
-  color: var(--text);
-}
-
-/* ---------- 15. About / Philosophy equations ---------- */
+/* ---------- 14. About tags / Philosophy equation ---------- */
 
 .about-layout {
   display: grid;
@@ -600,6 +535,21 @@ section {
 
 .about-layout h2 { font-size: clamp(2rem, 4vw, 2.8rem); }
 .about-layout p { margin-top: 20px; font-size: 1.05rem; max-width: 44ch; }
+
+.about-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+
+.about-tags span {
+  border: 1px solid var(--border-strong);
+  border-radius: 4px;
+  padding: 10px 18px;
+  font-size: 0.88rem;
+  letter-spacing: 0.02em;
+  color: var(--text);
+}
 
 .philosophy h2 {
   font-size: clamp(2.4rem, 5.5vw, 4rem);
@@ -648,7 +598,7 @@ section {
 
 .equation--wide { margin-top: 64px; }
 
-/* ---------- 15b. Why Enavio (principles) ---------- */
+/* ---------- 14b. Why Enavio (principles) ---------- */
 
 .principle-list {
   display: grid;
@@ -678,7 +628,7 @@ section {
   max-width: 34ch;
 }
 
-/* ---------- 15c. Founder (quiet, text-only — no photo) ---------- */
+/* ---------- 14c. Founder (quiet, text-only — no photo) ---------- */
 
 .founder {
   padding-top: clamp(56px, 7vw, 96px);
@@ -715,7 +665,7 @@ section {
   color: var(--text-faint);
 }
 
-/* ---------- 15c. Final CTA actions ---------- */
+/* ---------- 14d. Final CTA actions ---------- */
 
 .final-cta-actions {
   display: flex;
@@ -725,7 +675,7 @@ section {
   margin-top: 40px;
 }
 
-/* ---------- 16. Final CTA ---------- */
+/* ---------- 15. Final CTA ---------- */
 
 .final-cta {
   position: relative;
@@ -758,7 +708,7 @@ section {
 
 .final-cta-inner .btn { margin-top: 40px; }
 
-/* ---------- 17. Contact ---------- */
+/* ---------- 16. Contact ---------- */
 
 .contact-layout {
   display: grid;
@@ -821,7 +771,7 @@ section {
 .form-success strong { color: var(--text); display: block; margin-bottom: 4px; }
 .form-success p { font-size: 0.92rem; }
 
-/* ---------- 18. Footer ---------- */
+/* ---------- 17. Footer ---------- */
 
 .footer { padding-top: 64px; }
 
@@ -869,7 +819,7 @@ section {
   50% { opacity: 0.3; }
 }
 
-/* ---------- 19. Reveal ---------- */
+/* ---------- 18. Reveal ---------- */
 
 .reveal {
   opacity: 0;
@@ -878,7 +828,7 @@ section {
 }
 .reveal.in-view { opacity: 1; transform: translateY(0); }
 
-/* ---------- 20. Cursor spotlight & magnetic buttons ---------- */
+/* ---------- 19. Cursor spotlight & magnetic buttons ---------- */
 
 .cursor-spotlight {
   position: fixed;
@@ -895,7 +845,7 @@ section {
 
 .magnetic { will-change: transform; }
 
-/* ---------- 21. Responsive ---------- */
+/* ---------- 20. Responsive ---------- */
 
 @media (max-width: 1023px) {
   .principle-list { grid-template-columns: 1fr; gap: 32px; }
@@ -907,9 +857,6 @@ section {
   .tech-grid { grid-template-columns: repeat(2, 1fr); }
   .about-layout { grid-template-columns: 1fr; }
   .contact-layout { grid-template-columns: 1fr; }
-  .metrics-grid { grid-template-columns: 1fr; gap: 32px; }
-  .case-row { grid-template-columns: 1fr; }
-  .case-visual { height: 90px; }
   .timeline-step { grid-template-columns: 1fr; gap: 10px; }
 }
 
@@ -937,7 +884,7 @@ section {
   .cursor-spotlight { display: none; }
 }
 
-/* ---------- 22. Reduced motion ---------- */
+/* ---------- 21. Reduced motion ---------- */
 
 @media (prefers-reduced-motion: reduce) {
   html { scroll-behavior: auto; }
@@ -947,5 +894,5 @@ section {
     transition-duration: 0.01ms !important;
   }
   .reveal { opacity: 1; transform: none; }
-  #hero-canvas, #cta-canvas, .hero-labels, .cursor-spotlight { display: none; }
+  #cta-canvas, .cursor-spotlight { display: none; }
 }
