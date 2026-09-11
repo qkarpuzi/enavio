@@ -354,7 +354,7 @@
         <p>Tell us about the problem. We'll get back to you to discuss scope and feasibility.</p>
       </div>
 
-      <form id="contact-form" class="contact-form reveal" novalidate>
+      <form id="contact-form" class="contact-form reveal" novalidate action="https://formspree.io/f/mkjnyyqz" method="POST">
         <div class="form-grid">
           <div class="form-row">
             <label for="name">Name</label>
@@ -392,15 +392,8 @@
         </div>
 
         <button type="submit" class="btn btn-primary magnetic form-submit">Send Inquiry →</button>
-
-        <div class="form-success" id="form-success" role="status" hidden>
-          <span class="form-success-icon" aria-hidden="true">✓</span>
-          <div>
-            <strong>Inquiry received.</strong>
-            <p>Thanks for reaching out — we'll follow up shortly.</p>
-          </div>
-        </div>
       </form>
+      <p id="form-success" hidden>Thanks — we'll be in touch soon.</p>
     </div>
   </section>
 
@@ -426,12 +419,14 @@
 
     <div class="footer-contact">
       <a href="https://www.linkedin.com/in/qefser-karpuzi-9437a7327/" target="_blank" rel="noopener">LinkedIn</a>
-      <a href="mailto:hello@enavioai.com">hello@enavioai.com</a>
+      <a href="mailto:enavioai@gmail.com">enavioai@gmail.com</a>
     </div>
   </div>
   <div class="container footer-bottom">
     <span>© 2026 Enavio AI. All rights reserved.</span>
-    <span class="status-line"><span class="status-dot"></span>SYSTEM STATUS: ONLINE</span>
+    <nav class="footer-legal" aria-label="Legal">
+      <a href="privacy.html">Privacy Policy</a> · <a href="terms.html">Terms of Service</a>
+    </nav>
   </div>
 </footer>
 

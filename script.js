@@ -535,10 +535,35 @@
         return;
       }
 
-      // NOTE: no backend connected yet. Replace this block with a
-      // fetch() call to your API or email service when ready.
-      form.reset();
-      successMsg.hidden = false;
+      var submitBtn = form.querySelector(".form-submit");
+      var originalBtnText = submitBtn.textContent;
+      submitBtn.disabled = true;
+      submitBtn.textContent = "Sending…";
+
+      fetch(form.action, {
+        method: "POST",
+        body: new FormData(form),
+        headers: { "Accept": "application/json" }
+      })
+        .then(function (response) {
+          if (response.ok) {
+            form.reset();
+            successMsg.hidden = false;
+          } else {
+            response.json().then(function (data) {
+              console.error("Formspree error:", data);
+              alert("Something went wrong sending your message. Please try emailing us directly at enavioai@gmail.com.");
+            });
+          }
+        })
+        .catch(function (err) {
+          console.error("Network error:", err);
+          alert("Something went wrong sending your message. Please try emailing us directly at enavioai@gmail.com.");
+        })
+        .finally(function () {
+          submitBtn.disabled = false;
+          submitBtn.textContent = originalBtnText;
+        });
     });
   }
 
