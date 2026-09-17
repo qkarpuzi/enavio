@@ -1,0 +1,317 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Work — Enavio AI</title>
+<meta name="description" content="Case studies from Enavio AI: an AI assistant for a 20,000-student university, an OCR document classification system, and an in-progress risk dashboard for construction.">
+<link rel="canonical" href="https://www.enavioai.com/work.html">
+
+<meta property="og:title" content="Work — Enavio AI">
+<meta property="og:description" content="Case studies from Enavio AI: an AI assistant for a 20,000-student university, an OCR document classification system, and an in-progress risk dashboard for construction.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://www.enavioai.com/work.html">
+
+<link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><circle cx=%2250%22 cy=%2250%22 r=%2230%22 fill=%22none%22 stroke=%22%234FD1E8%22 stroke-width=%228%22/></svg>">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<a class="skip-link" href="#main">Skip to content</a>
+
+<div class="bg-system" aria-hidden="true">
+  <div class="bg-grid"></div>
+  <div class="bg-glow"></div>
+</div>
+
+<header class="navbar" id="navbar">
+  <div class="navbar-inner">
+    <a href="index.html" class="logo">ENAVIO AI</a>
+    <nav class="nav-links" id="nav-links" aria-label="Primary">
+      <a href="index.html">Home</a>
+      <a href="services.html">Services</a>
+      <a href="work.html">Work</a>
+      <a href="technology.html">Technology</a>
+      <a href="about.html">About</a>
+      <a href="contact.html">Contact</a>
+    </nav>
+    <a href="mailto:enavioai@gmail.com?subject=Enavio%20AI%20Project%20Inquiry" class="btn btn-primary magnetic nav-cta">Start a Project →</a>
+    <button class="menu-toggle" id="menu-toggle" aria-label="Toggle menu" aria-expanded="false" aria-controls="nav-links">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</header>
+
+<main id="main">
+
+  <!-- ============ PAGE HERO ============ -->
+  <section class="page-hero">
+    <div class="container">
+      <span class="page-eyebrow reveal">Work</span>
+      <h1 class="reveal">Real systems, not concepts.</h1>
+      <p class="page-lede reveal">Two of these are built and working. One is still in progress. All three are real projects with real code — nothing here is a hypothetical case study.</p>
+    </div>
+  </section>
+
+  <!-- ============ CASE 01 — AAB CHATBOT ============ -->
+  <section class="reveal-section" id="aab-chatbot">
+    <div class="container">
+      <div class="case-study">
+        <div class="case-study-head reveal">
+          <div>
+            <span class="case-tag">RAG AI Assistant · Higher Education</span>
+            <h2>An AI assistant for a 20,000-student university</h2>
+          </div>
+          <div class="case-study-links">
+            <span class="proof-badge"><svg width="14" height="14" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M8 0C3.58 0 0 3.58 0 8a8 8 0 0 0 5.47 7.59c.4.07.55-.17.55-.38v-1.33c-2.22.48-2.69-1.07-2.69-1.07-.36-.93-.89-1.17-.89-1.17-.72-.5.06-.49.06-.49.8.06 1.22.82 1.22.82.71 1.22 1.87.87 2.33.66.07-.52.28-.87.5-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.13 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.03 2.2-.82 2.2-.82.44 1.11.16 1.93.08 2.13.51.56.82 1.28.82 2.15 0 3.07-1.87 3.75-3.65 3.94.29.25.54.73.54 1.48v2.2c0 .21.15.46.55.38A8 8 0 0 0 16 8c0-4.42-3.58-8-8-8Z" fill="currentColor"/></svg> <strong>Public code</strong> — verify it yourself</span>
+            <a href="https://github.com/qkarpuzi/aab-chatbot" target="_blank" rel="noopener" class="case-link">View on GitHub →</a>
+          </div>
+        </div>
+
+        <div class="case-study-grid">
+          <div class="case-study-steps reveal">
+            <div class="case-step">
+              <span class="case-step-num">01 — The Challenge</span>
+              <h4>Students and staff need answers general AI can't give</h4>
+              <p>AAB College, the largest non-public university in Kosovo, has its own programs, policies, and institutional information that a general-purpose chatbot simply doesn't know — and will guess at anyway.</p>
+            </div>
+            <div class="case-step">
+              <span class="case-step-num">02 — The System</span>
+              <h4>A retrieval-augmented assistant</h4>
+              <p>An AI assistant that retrieves relevant passages from AAB's actual programs, policies, and institutional documents at answer time, then generates a response grounded in what it retrieved.</p>
+            </div>
+            <div class="case-step">
+              <span class="case-step-num">03 — How It Works</span>
+              <h4>Retrieve first, answer second</h4>
+              <p>A question comes in, relevant institutional documents are retrieved from AAB's records, and the assistant answers using only that retrieved content — rather than recalling from general training data.</p>
+            </div>
+            <div class="case-step">
+              <span class="case-step-num">04 — Technology</span>
+              <h4>RAG, LLMs, and institutional data</h4>
+              <p>Built on retrieval-augmented generation over AAB's own document set, using large language models for the conversational layer.</p>
+              <div class="case-tech-tags">
+                <span>Retrieval-Augmented Generation</span>
+                <span>Large Language Models</span>
+                <span>Institutional Data</span>
+              </div>
+            </div>
+            <div class="case-step">
+              <span class="case-step-num">05 — Status</span>
+              <h4>Built and working</h4>
+              <p>The assistant is built and answering questions grounded in AAB's actual institutional information. Full code is public on GitHub.</p>
+            </div>
+          </div>
+
+          <div class="case-study-visual reveal">
+            <div class="mockup-window">
+              <div class="mockup-bar">
+                <span class="mockup-mark" aria-hidden="true"></span>
+                <span class="mockup-title">AAB AI Assistant</span>
+                <span class="mockup-status">Preview</span>
+              </div>
+              <div class="mockup-body">
+                <div class="mockup-chat-msg is-user">
+                  <span class="mockup-role">User</span>
+                  What are the admission requirements for the Computer Science program?
+                </div>
+                <div class="mockup-chat-msg is-ai">
+                  <span class="mockup-role">AI Assistant — grounded in AAB records</span>
+                  Retrieved from AAB's program documentation, then answered from that source rather than general knowledge.
+                </div>
+              </div>
+            </div>
+            <span class="mockup-caption">Interface demonstration — illustrative conversation, not a captured transcript.</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ CASE 02 — DOCUMENT AI ============ -->
+  <section class="reveal-section" id="document-ai">
+    <div class="container">
+      <div class="case-study">
+        <div class="case-study-head reveal">
+          <div>
+            <span class="case-tag">OCR &amp; Document Classification</span>
+            <h2>A system that reads and sorts documents on its own</h2>
+          </div>
+          <div class="case-study-links">
+            <span class="proof-badge"><svg width="14" height="14" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M8 0C3.58 0 0 3.58 0 8a8 8 0 0 0 5.47 7.59c.4.07.55-.17.55-.38v-1.33c-2.22.48-2.69-1.07-2.69-1.07-.36-.93-.89-1.17-.89-1.17-.72-.5.06-.49.06-.49.8.06 1.22.82 1.22.82.71 1.22 1.87.87 2.33.66.07-.52.28-.87.5-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.13 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.03 2.2-.82 2.2-.82.44 1.11.16 1.93.08 2.13.51.56.82 1.28.82 2.15 0 3.07-1.87 3.75-3.65 3.94.29.25.54.73.54 1.48v2.2c0 .21.15.46.55.38A8 8 0 0 0 16 8c0-4.42-3.58-8-8-8Z" fill="currentColor"/></svg> <strong>Public code</strong> — verify it yourself</span>
+            <a href="https://github.com/qkarpuzi/document-ai-system" target="_blank" rel="noopener" class="case-link">View on GitHub →</a>
+          </div>
+        </div>
+
+        <div class="case-study-grid">
+          <div class="case-study-steps reveal">
+            <div class="case-step">
+              <span class="case-step-num">01 — The Challenge</span>
+              <h4>Manual document sorting doesn't scale</h4>
+              <p>Organizations receive a steady stream of scanned documents and photos of paperwork. Sorting and filing them by hand is slow and error-prone.</p>
+            </div>
+            <div class="case-step">
+              <span class="case-step-num">02 — The System</span>
+              <h4>OCR plus automatic classification</h4>
+              <p>A system that takes a scanned document — or just a photo of one — extracts the text with OCR, and automatically classifies what type of document it is.</p>
+            </div>
+            <div class="case-step">
+              <span class="case-step-num">03 — How It Works</span>
+              <h4>Extract, then classify</h4>
+              <p>Text is extracted from the image using optical character recognition, then the extracted content is run through a classifier that determines the document type — no manual sorting step required.</p>
+            </div>
+            <div class="case-step">
+              <span class="case-step-num">04 — Technology</span>
+              <h4>Computer vision and classification models</h4>
+              <p>Built on OCR and computer vision for text extraction, with a classification layer for document typing.</p>
+              <div class="case-tech-tags">
+                <span>OCR</span>
+                <span>Computer Vision</span>
+                <span>Classification Models</span>
+              </div>
+            </div>
+            <div class="case-step">
+              <span class="case-step-num">05 — Status</span>
+              <h4>Built and working</h4>
+              <p>The system reads and classifies documents, including imperfect scans and photos rather than only clean, flatbed-scanned input. Full code is public on GitHub.</p>
+            </div>
+          </div>
+
+          <div class="case-study-visual reveal">
+            <div class="mockup-window">
+              <div class="mockup-bar">
+                <span class="mockup-mark" aria-hidden="true"></span>
+                <span class="mockup-title">Document Intelligence</span>
+                <span class="mockup-status">Preview</span>
+              </div>
+              <div class="mockup-body">
+                <div class="mockup-doc-file">scan_0142.jpg</div>
+                <div class="mockup-doc-row"><span class="mockup-doc-label">Input</span><span class="mockup-doc-value">Photo of document</span></div>
+                <div class="mockup-doc-row"><span class="mockup-doc-label">OCR Extraction</span><span class="mockup-pill">Complete</span></div>
+                <div class="mockup-doc-row"><span class="mockup-doc-label">Document Type</span><span class="mockup-doc-value is-accent">Classified</span></div>
+                <div class="mockup-doc-row"><span class="mockup-doc-label">Status</span><span class="mockup-pill">Sorted — no manual step</span></div>
+              </div>
+            </div>
+            <span class="mockup-caption">Interface demonstration — illustrative field labels, not live data.</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ CASE 03 — CONSTRUCTAI ============ -->
+  <section class="reveal-section" id="constructai">
+    <div class="container">
+      <div class="case-study">
+        <div class="case-study-head reveal">
+          <div>
+            <span class="case-tag case-tag--progress">In progress · Construction &amp; Risk Management</span>
+            <h2>Risk visibility for construction projects</h2>
+          </div>
+          <div class="case-study-links">
+            <span class="proof-badge"><svg width="14" height="14" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M8 0C3.58 0 0 3.58 0 8a8 8 0 0 0 5.47 7.59c.4.07.55-.17.55-.38v-1.33c-2.22.48-2.69-1.07-2.69-1.07-.36-.93-.89-1.17-.89-1.17-.72-.5.06-.49.06-.49.8.06 1.22.82 1.22.82.71 1.22 1.87.87 2.33.66.07-.52.28-.87.5-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.13 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.03 2.2-.82 2.2-.82.44 1.11.16 1.93.08 2.13.51.56.82 1.28.82 2.15 0 3.07-1.87 3.75-3.65 3.94.29.25.54.73.54 1.48v2.2c0 .21.15.46.55.38A8 8 0 0 0 16 8c0-4.42-3.58-8-8-8Z" fill="currentColor"/></svg> <strong>In development</strong> — public repo</span>
+            <a href="https://github.com/qkarpuzi/constructai" target="_blank" rel="noopener" class="case-link">View on GitHub →</a>
+          </div>
+        </div>
+
+        <div class="case-study-grid">
+          <div class="case-study-steps reveal">
+            <div class="case-step">
+              <span class="case-step-num">01 — The Challenge</span>
+              <h4>Invoices and project data drift apart</h4>
+              <p>On construction projects, invoices and project records can quietly stop matching — and projects that were expected to win can start losing ground — without anyone noticing until it's expensive.</p>
+            </div>
+            <div class="case-step">
+              <span class="case-step-num">02 — The System</span>
+              <h4>A dashboard with a chatbot</h4>
+              <p>Currently building: a dashboard, paired with a chatbot, that cross-references invoices against project data for construction companies.</p>
+            </div>
+            <div class="case-step">
+              <span class="case-step-num">03 — How It Works</span>
+              <h4>Cross-reference and flag</h4>
+              <p>Invoices are checked against project records. Mismatches are flagged, and projects trending away from expectations are surfaced — instead of being found the hard way, later.</p>
+            </div>
+            <div class="case-step">
+              <span class="case-step-num">04 — Technology</span>
+              <h4>Data cross-referencing and conversational access</h4>
+              <p>Structured data comparison across invoice and project records, with a chatbot layer for querying the dashboard directly.</p>
+              <div class="case-tech-tags">
+                <span>Data Extraction &amp; Structuring</span>
+                <span>Anomaly Detection</span>
+                <span>Conversational AI</span>
+              </div>
+            </div>
+            <div class="case-step">
+              <span class="case-step-num">05 — Status</span>
+              <h4>In progress</h4>
+              <p>This system is actively being built. The interface below shows the concept currently in development, not a finished product.</p>
+            </div>
+          </div>
+
+          <div class="case-study-visual reveal">
+            <div class="mockup-window">
+              <div class="mockup-bar">
+                <span class="mockup-mark" aria-hidden="true"></span>
+                <span class="mockup-title">ConstructAI — concept</span>
+                <span class="mockup-status">In development</span>
+              </div>
+              <div class="mockup-body">
+                <div class="mockup-list-row"><span class="mockup-list-name">Project A — invoices vs. records</span><span class="mockup-pill">Matches</span></div>
+                <div class="mockup-list-row"><span class="mockup-list-name">Project B — invoices vs. records</span><span class="mockup-pill is-muted">Flagged — mismatch</span></div>
+                <div class="mockup-list-row"><span class="mockup-list-name">Project C — win probability</span><span class="mockup-pill is-muted">Losing ground</span></div>
+              </div>
+            </div>
+            <span class="mockup-caption">Concept mockup — in development, values are illustrative placeholders.</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ CTA ============ -->
+  <section class="final-cta reveal-section">
+    <canvas id="cta-canvas" aria-hidden="true"></canvas>
+    <div class="container final-cta-inner">
+      <h2 class="reveal">Have a problem worth solving?</h2>
+      <p class="reveal">Let's engineer the intelligence behind it.</p>
+      <div class="final-cta-actions reveal">
+        <a href="mailto:enavioai@gmail.com?subject=Enavio%20AI%20Project%20Inquiry" class="btn btn-primary magnetic">Start a Project →</a>
+        <a href="services.html" class="btn btn-ghost magnetic">See services →</a>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer class="footer">
+  <div class="container footer-inner">
+    <div class="footer-brand">
+      <span class="logo">ENAVIO AI</span>
+      <p>AI Systems Grounded in Real Data.</p>
+      <p class="founder-credit">Qefser Karpuzi — Founder &amp; CEO</p>
+    </div>
+    <nav class="footer-links" aria-label="Footer">
+      <a href="services.html">Services</a>
+      <a href="work.html">Work</a>
+      <a href="technology.html">Technology</a>
+      <a href="about.html">About</a>
+      <a href="contact.html">Contact</a>
+    </nav>
+    <div class="footer-contact">
+      <a href="https://www.linkedin.com/in/qefser-karpuzi-9437a7327/" target="_blank" rel="noopener">LinkedIn</a>
+      <a href="mailto:enavioai@gmail.com">enavioai@gmail.com</a>
+    </div>
+  </div>
+  <div class="container footer-bottom">
+    <span>© 2026 Enavio AI. All rights reserved.</span>
+    <nav class="footer-legal" aria-label="Legal">
+      <a href="privacy.html">Privacy Policy</a> · <a href="terms.html">Terms of Service</a>
+    </nav>
+  </div>
+</footer>
+
+<script src="script.js"></script>
+</body>
+</html>

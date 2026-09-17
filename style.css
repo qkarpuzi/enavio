@@ -612,6 +612,24 @@ section {
 
 .equation--wide { margin-top: 64px; }
 
+/* ---------- 14a2. Why Enavio — condensed home teaser ---------- */
+
+.why-teaser-inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 40px;
+  flex-wrap: wrap;
+}
+
+.why-teaser-text {
+  font-size: clamp(1.15rem, 2.4vw, 1.5rem);
+  color: var(--text-muted);
+  max-width: 52ch;
+  line-height: 1.5;
+}
+.why-teaser-text strong { color: var(--text); font-weight: 600; }
+
 /* ---------- 14b. Why Enavio (principles) ---------- */
 
 .principle-list {
@@ -708,6 +726,8 @@ section {
 
 .final-cta-inner { position: relative; z-index: 2; }
 
+.final-cta--quiet { background: var(--surface); }
+
 .final-cta-inner h2 {
   font-size: clamp(2.4rem, 5.5vw, 4rem);
   max-width: 16ch;
@@ -722,68 +742,67 @@ section {
 
 .final-cta-inner .btn { margin-top: 40px; }
 
-/* ---------- 16. Contact ---------- */
+/* ---------- 16. Contact (mailto CTA — no form) ---------- */
 
-.contact-layout {
-  display: grid;
-  grid-template-columns: 1fr 1.5fr;
-  gap: 64px;
-}
-
-.contact-intro p { margin-top: 16px; font-size: 1rem; max-width: 36ch; }
-
-.contact-form {
-  display: flex;
-  flex-direction: column;
-  gap: 24px;
-}
-
-.form-grid {
+.contact-direct {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  gap: 24px;
+  gap: 64px;
+  align-items: start;
 }
 
-.form-row { display: flex; flex-direction: column; gap: 8px; }
-.form-row label { font-size: 0.88rem; color: var(--text-muted); }
-
-.form-row input,
-.form-row select,
-.form-row textarea {
+.contact-email-card {
+  border: 1px solid var(--border-strong);
+  border-radius: 8px;
+  padding: clamp(32px, 4vw, 48px);
   background: var(--surface);
-  border: 1px solid var(--border);
-  border-radius: 4px;
-  padding: 14px 16px;
-  color: var(--text);
-  font-size: 0.98rem;
-  transition: border-color var(--t-fast);
-  resize: vertical;
-}
-
-.form-row input:focus,
-.form-row select:focus,
-.form-row textarea:focus { border-color: var(--accent); outline: none; }
-
-.form-row.invalid input,
-.form-row.invalid textarea { border-color: #e0574c; }
-
-.field-error { font-size: 0.82rem; color: #e0574c; min-height: 1em; }
-
-.form-submit { align-self: flex-start; margin-top: 8px; }
-
-.form-success {
   display: flex;
+  flex-direction: column;
   gap: 14px;
-  align-items: flex-start;
-  padding: 20px;
-  border: 1px solid var(--accent);
-  border-radius: 6px;
-  background: var(--accent-soft);
 }
 
-.form-success-icon { color: var(--accent); font-size: 1.1rem; }
-.form-success strong { color: var(--text); display: block; margin-bottom: 4px; }
-.form-success p { font-size: 0.92rem; }
+.contact-email-label {
+  font-size: 0.82rem;
+  color: var(--text-muted);
+  letter-spacing: 0.04em;
+}
+
+.contact-email-link {
+  font-size: clamp(1.4rem, 3vw, 2rem);
+  font-weight: 600;
+  color: var(--text);
+  letter-spacing: -0.01em;
+  word-break: break-word;
+  transition: color var(--t-fast);
+}
+.contact-email-link:hover,
+.contact-email-link:focus-visible { color: var(--accent); }
+
+.contact-email-hint {
+  font-size: 0.85rem;
+  color: var(--text-faint);
+}
+
+.contact-secondary h2 { font-size: clamp(1.6rem, 3vw, 2.2rem); }
+.contact-secondary p { margin-top: 16px; font-size: 1rem; max-width: 44ch; }
+
+.contact-type-links {
+  margin-top: 28px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.contact-type-links a {
+  font-size: 0.85rem;
+  color: var(--text);
+  border: 1px solid var(--border-strong);
+  border-radius: 100px;
+  padding: 9px 16px;
+  transition: border-color var(--t-fast), color var(--t-fast);
+}
+.contact-type-links a:hover,
+.contact-type-links a:focus-visible { border-color: var(--accent); color: var(--accent); }
 
 /* ---------- 17. Footer ---------- */
 
@@ -842,22 +861,441 @@ section {
 }
 .reveal.in-view { opacity: 1; transform: translateY(0); }
 
-/* ---------- 19. Cursor spotlight & magnetic buttons ---------- */
-
-.cursor-spotlight {
-  position: fixed;
-  top: 0; left: 0;
-  width: 420px; height: 420px;
-  border-radius: 50%;
-  background: radial-gradient(circle, var(--accent-soft) 0%, transparent 70%);
-  transform: translate(-50%, -50%);
-  pointer-events: none;
-  z-index: 1;
-  opacity: 0;
-  transition: opacity 0.3s ease;
-}
+/* ---------- 19. Magnetic buttons ---------- */
 
 .magnetic { will-change: transform; }
+
+/* ---------- 21b. Legal page prose ---------- */
+
+.legal-content {
+  max-width: 720px;
+  margin: 0 auto;
+  padding: clamp(140px, 16vw, 190px) var(--gutter) clamp(80px, 10vw, 120px);
+}
+.legal-content h1 { font-size: clamp(2rem, 4vw, 2.8rem); margin-bottom: 8px; }
+.legal-content .legal-updated { color: var(--text-faint); font-size: 0.88rem; }
+.legal-content h2 { font-size: 1.3rem; margin-top: 44px; margin-bottom: 14px; }
+.legal-content p { font-size: 0.98rem; margin-bottom: 4px; }
+.legal-content a { color: var(--accent); }
+.legal-content .case-link { display: inline-flex; margin-top: 44px; }
+
+/* ---------- 22. Multi-page nav / active state ---------- */
+
+.nav-links a.active {
+  color: var(--text);
+  position: relative;
+}
+.nav-links a.active::after {
+  content: "";
+  position: absolute;
+  left: 0; right: 0; bottom: -6px;
+  height: 1px;
+  background: var(--accent);
+}
+@media (max-width: 767px) {
+  .nav-links a.active::after { display: none; }
+  .nav-links a.active { color: var(--accent); }
+}
+
+/* ---------- 23. Page hero (sub-pages) ---------- */
+
+.page-hero {
+  padding: clamp(150px, 18vw, 210px) 0 clamp(56px, 8vw, 96px);
+  border-bottom: 1px solid var(--border);
+}
+
+.page-eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 0.82rem;
+  color: var(--accent);
+  letter-spacing: 0.06em;
+  margin-bottom: 22px;
+}
+
+.page-hero h1 {
+  font-size: clamp(2.4rem, 6vw, 4.4rem);
+  max-width: 18ch;
+}
+
+.page-hero .page-lede {
+  margin-top: 22px;
+  font-size: clamp(1.05rem, 1.6vw, 1.25rem);
+  color: var(--text-muted);
+  max-width: 56ch;
+}
+
+/* ---------- 24. Visual "what we build" cards ---------- */
+
+.build-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1px;
+  background: var(--border);
+  border: 1px solid var(--border);
+}
+
+.build-card {
+  background: var(--bg);
+  padding: 40px;
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  transition: background var(--t-med);
+}
+.build-card:hover { background: var(--surface); }
+
+.build-card h3 { font-size: 1.2rem; }
+.build-card p { font-size: 0.94rem; max-width: 42ch; }
+
+/* Mini vertical flow diagram used inside build cards */
+.mini-flow {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 0;
+}
+
+.mini-flow-step {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 8px 14px;
+  border: 1px solid var(--border-strong);
+  border-radius: 4px;
+  font-size: 0.78rem;
+  letter-spacing: 0.03em;
+  color: var(--text-muted);
+  background: var(--surface);
+}
+
+.mini-flow-step.is-accent {
+  border-color: var(--accent);
+  color: var(--accent);
+}
+
+.mini-flow-arrow {
+  height: 20px;
+  width: 1px;
+  background: var(--border-strong);
+  margin-left: 20px;
+  position: relative;
+}
+.mini-flow-arrow::after {
+  content: "";
+  position: absolute;
+  bottom: -1px; left: -3px;
+  width: 7px; height: 7px;
+  border-right: 1px solid var(--border-strong);
+  border-bottom: 1px solid var(--border-strong);
+  transform: rotate(45deg);
+}
+
+/* ---------- 25. UI mockup windows (chat / document / dashboard) ---------- */
+
+.mockup-caption {
+  display: block;
+  font-size: 0.78rem;
+  color: var(--text-faint);
+  letter-spacing: 0.03em;
+  margin-top: 14px;
+}
+
+.mockup-window {
+  border: 1px solid var(--border-strong);
+  border-radius: 8px;
+  background: var(--surface);
+  overflow: hidden;
+}
+
+.mockup-bar {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 12px 16px;
+  border-bottom: 1px solid var(--border);
+  background: var(--surface-2);
+}
+
+.mockup-mark {
+  width: 6px; height: 6px;
+  background: var(--accent);
+  flex-shrink: 0;
+}
+
+.mockup-title {
+  font-size: 0.8rem;
+  color: var(--text-muted);
+  letter-spacing: 0.02em;
+}
+
+.mockup-status {
+  margin-left: auto;
+  font-size: 0.7rem;
+  letter-spacing: 0.04em;
+  color: var(--text-faint);
+  text-transform: uppercase;
+}
+
+.mockup-body { padding: 22px; }
+
+/* Chat mockup */
+.mockup-chat-msg {
+  max-width: 82%;
+  margin-bottom: 16px;
+  padding: 12px 16px;
+  border-radius: 8px;
+  font-size: 0.92rem;
+  line-height: 1.5;
+}
+.mockup-chat-msg:last-child { margin-bottom: 0; }
+
+.mockup-chat-msg .mockup-role {
+  display: block;
+  font-size: 0.72rem;
+  letter-spacing: 0.05em;
+  color: var(--text-faint);
+  margin-bottom: 6px;
+}
+
+.mockup-chat-msg.is-user {
+  background: var(--bg);
+  border: 1px solid var(--border);
+  color: var(--text);
+  margin-left: auto;
+}
+
+.mockup-chat-msg.is-ai {
+  background: var(--accent-soft);
+  border: 1px solid rgba(79, 209, 232, 0.28);
+  color: var(--text);
+}
+
+/* Document intelligence mockup */
+.mockup-doc-file {
+  font-size: 0.85rem;
+  color: var(--text-muted);
+  padding-bottom: 16px;
+  margin-bottom: 16px;
+  border-bottom: 1px dashed var(--border-strong);
+}
+
+.mockup-doc-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 0;
+  border-bottom: 1px solid var(--border);
+  font-size: 0.9rem;
+}
+.mockup-doc-row:last-child { border-bottom: none; }
+
+.mockup-doc-label { color: var(--text-muted); }
+.mockup-doc-value { color: var(--text); font-weight: 500; }
+.mockup-doc-value.is-accent { color: var(--accent); }
+
+.mockup-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 0.78rem;
+  padding: 4px 10px;
+  border-radius: 100px;
+  background: var(--accent-soft);
+  color: var(--accent);
+}
+.mockup-pill::before {
+  content: "";
+  width: 5px; height: 5px;
+  border-radius: 50%;
+  background: currentColor;
+}
+.mockup-pill.is-muted { background: var(--surface-2); color: var(--text-muted); }
+
+/* Dashboard mockup */
+.mockup-list-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 12px;
+  padding: 12px 0;
+  border-bottom: 1px solid var(--border);
+  font-size: 0.88rem;
+}
+.mockup-list-row:last-child { border-bottom: none; }
+.mockup-list-name { color: var(--text); }
+.mockup-list-meta { color: var(--text-faint); font-size: 0.8rem; }
+
+/* ---------- 26. Case study layout ---------- */
+
+.case-study {
+  border-top: 1px solid var(--border);
+  padding: clamp(56px, 8vw, 96px) 0;
+}
+.case-study:first-of-type { border-top: none; }
+
+.case-study-head {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 16px;
+  margin-bottom: 48px;
+}
+
+.case-study-head h2 { font-size: clamp(1.8rem, 3.4vw, 2.6rem); max-width: 24ch; }
+
+.case-study-links { display: flex; gap: 14px; flex-wrap: wrap; }
+
+.case-study-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 64px;
+}
+
+.case-study-steps { display: flex; flex-direction: column; gap: 32px; }
+
+.case-step-num {
+  display: block;
+  font-size: 0.82rem;
+  color: var(--accent);
+  margin-bottom: 8px;
+}
+
+.case-step h4 { font-size: 1.05rem; margin-bottom: 8px; }
+.case-step p { font-size: 0.94rem; max-width: 44ch; }
+
+.case-study-visual { position: sticky; top: 110px; align-self: start; }
+
+.proof-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 0.8rem;
+  color: var(--text-muted);
+  border: 1px solid var(--border-strong);
+  border-radius: 100px;
+  padding: 7px 14px 7px 10px;
+}
+.proof-badge svg { flex-shrink: 0; color: var(--text); }
+.proof-badge strong { color: var(--text); font-weight: 500; }
+
+.case-tech-tags { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 14px; }
+.case-tech-tags span {
+  font-size: 0.78rem;
+  color: var(--text-muted);
+  border: 1px solid var(--border);
+  border-radius: 4px;
+  padding: 6px 12px;
+}
+
+/* ---------- 27. Services page detail rows ---------- */
+
+.service-detail {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 64px;
+  align-items: center;
+  padding: clamp(56px, 7vw, 88px) 0;
+  border-top: 1px solid var(--border);
+}
+.service-detail:first-of-type { border-top: none; }
+.service-detail.is-reverse .service-detail-copy { order: 2; }
+.service-detail.is-reverse .service-detail-visual { order: 1; }
+
+.service-detail-copy .service-num { display: block; margin-bottom: 18px; }
+.service-detail-copy h3 { font-size: 1.7rem; margin-bottom: 16px; }
+.service-detail-copy p { font-size: 1rem; max-width: 46ch; }
+
+.service-use-cases {
+  margin-top: 24px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+.service-use-cases li {
+  font-size: 0.9rem;
+  color: var(--text-muted);
+  padding-left: 20px;
+  position: relative;
+}
+.service-use-cases li::before {
+  content: "";
+  position: absolute;
+  left: 0; top: 9px;
+  width: 8px; height: 1px;
+  background: var(--accent);
+}
+
+.service-detail-copy .case-link { margin-top: 26px; display: inline-flex; }
+
+/* ---------- 28. Technology / architecture diagram (vertical) ---------- */
+
+.arch-vertical {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0;
+  max-width: 420px;
+  margin: 0 auto;
+}
+
+.arch-v-node {
+  width: 100%;
+  padding: 18px 24px;
+  border: 1px solid var(--border-strong);
+  border-radius: 6px;
+  background: var(--surface);
+  text-align: center;
+}
+
+.arch-v-node strong {
+  display: block;
+  font-size: 0.92rem;
+  letter-spacing: 0.04em;
+  color: var(--text);
+}
+.arch-v-node span {
+  display: block;
+  font-size: 0.8rem;
+  color: var(--text-muted);
+  margin-top: 4px;
+}
+
+.arch-v-node.is-accent { border-color: var(--accent); }
+.arch-v-node.is-accent strong { color: var(--accent); }
+
+.arch-v-connector {
+  width: 1px;
+  height: 28px;
+  background: var(--border-strong);
+  position: relative;
+}
+.arch-v-connector::after {
+  content: "";
+  position: absolute;
+  bottom: -1px; left: -3.5px;
+  width: 8px; height: 8px;
+  border-right: 1px solid var(--border-strong);
+  border-bottom: 1px solid var(--border-strong);
+  transform: rotate(45deg);
+}
+
+/* ---------- 29. Section CTA link row (home teasers → full pages) ---------- */
+
+.section-cta {
+  margin-top: 48px;
+  display: flex;
+  justify-content: center;
+}
+
+.section-head-cta {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 24px;
+}
 
 /* ---------- 20. Responsive ---------- */
 
@@ -870,8 +1308,15 @@ section {
   .service-visual, .service-arrow { display: none; }
   .tech-grid { grid-template-columns: repeat(2, 1fr); }
   .about-layout { grid-template-columns: 1fr; }
-  .contact-layout { grid-template-columns: 1fr; }
+  .contact-direct { grid-template-columns: 1fr; }
   .timeline-step { grid-template-columns: 1fr; gap: 10px; }
+  .build-grid { grid-template-columns: 1fr; }
+  .case-study-grid { grid-template-columns: 1fr; }
+  .case-study-visual { position: static; }
+  .service-detail { grid-template-columns: 1fr; gap: 32px; }
+  .service-detail.is-reverse .service-detail-copy,
+  .service-detail.is-reverse .service-detail-visual { order: initial; }
+  .section-head-cta { flex-direction: column; align-items: flex-start; }
 }
 
 @media (max-width: 767px) {
@@ -891,11 +1336,8 @@ section {
   .menu-toggle { display: flex; }
   .nav-cta { display: none; }
 
-  .form-grid { grid-template-columns: 1fr; }
   .capability-row li { padding: 0 16px; }
   .capability-row li:nth-child(3n+1) { padding-left: 0; }
-
-  .cursor-spotlight { display: none; }
 }
 
 /* ---------- 21. Reduced motion ---------- */
@@ -908,5 +1350,5 @@ section {
     transition-duration: 0.01ms !important;
   }
   .reveal { opacity: 1; transform: none; }
-  #cta-canvas, .cursor-spotlight { display: none; }
+  #cta-canvas { display: none; }
 }

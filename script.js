@@ -8,8 +8,6 @@
    - final CTA ambient canvas
    - timeline scroll progress
    - magnetic buttons
-   - cursor spotlight
-   - contact form validation
    ========================================================== */
 
 (function () {
@@ -32,6 +30,22 @@
 
     update();
     window.addEventListener("scroll", update, { passive: true });
+  }
+
+  /* ---------- Active nav link ---------- */
+
+  function initActiveNav() {
+    var links = document.querySelectorAll(".nav-links a");
+    if (!links.length) return;
+
+    var current = (location.pathname.split("/").pop() || "index.html");
+
+    links.forEach(function (link) {
+      var href = link.getAttribute("href").split("/").pop();
+      if (href === current || (href === "index.html" && current === "")) {
+        link.classList.add("active");
+      }
+    });
   }
 
   /* ---------- Mobile menu ---------- */
@@ -461,123 +475,16 @@
     });
   }
 
-  /* ---------- Cursor spotlight ---------- */
-
-  function initCursorSpotlight() {
-    if (prefersReducedMotion || isTouchDevice) return;
-
-    var spotlight = document.getElementById("cursor-spotlight");
-    if (!spotlight) return;
-
-    var visible = false;
-
-    document.addEventListener("mousemove", function (e) {
-      spotlight.style.left = e.clientX + "px";
-      spotlight.style.top = e.clientY + "px";
-      if (!visible) {
-        spotlight.style.opacity = "1";
-        visible = true;
-      }
-    });
-
-    document.addEventListener("mouseleave", function () {
-      spotlight.style.opacity = "0";
-      visible = false;
-    });
-  }
-
-  /* ---------- Contact form validation ---------- */
-
-  function initContactForm() {
-    var form = document.getElementById("contact-form");
-    if (!form) return;
-
-    var successMsg = document.getElementById("form-success");
-
-    var fields = [
-      { id: "name", errorId: "name-error", message: "Please enter your name." },
-      {
-        id: "email",
-        errorId: "email-error",
-        message: "Please enter a valid email address.",
-        validate: function (value) {
-          return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(value);
-        }
-      },
-      { id: "message", errorId: "message-error", message: "Tell us a bit about the problem." }
-    ];
-
-    function validateField(field) {
-      var input = document.getElementById(field.id);
-      var errorEl = document.getElementById(field.errorId);
-      var value = input.value.trim();
-      var isValid = value.length > 0;
-
-      if (isValid && field.validate) isValid = field.validate(value);
-
-      var row = input.closest(".form-row");
-      if (isValid) {
-        row.classList.remove("invalid");
-        errorEl.textContent = "";
-      } else {
-        row.classList.add("invalid");
-        errorEl.textContent = field.message;
-      }
-      return isValid;
-    }
-
-    form.addEventListener("submit", function (e) {
-      e.preventDefault();
-      var allValid = fields.every(validateField);
-
-      if (!allValid) {
-        successMsg.hidden = true;
-        return;
-      }
-
-      var submitBtn = form.querySelector(".form-submit");
-      var originalBtnText = submitBtn.textContent;
-      submitBtn.disabled = true;
-      submitBtn.textContent = "Sending…";
-
-      fetch(form.action, {
-        method: "POST",
-        body: new FormData(form),
-        headers: { "Accept": "application/json" }
-      })
-        .then(function (response) {
-          if (response.ok) {
-            form.reset();
-            successMsg.hidden = false;
-          } else {
-            response.json().then(function (data) {
-              console.error("Formspree error:", data);
-              alert("Something went wrong sending your message. Please try emailing us directly at enavioai@gmail.com.");
-            });
-          }
-        })
-        .catch(function (err) {
-          console.error("Network error:", err);
-          alert("Something went wrong sending your message. Please try emailing us directly at enavioai@gmail.com.");
-        })
-        .finally(function () {
-          submitBtn.disabled = false;
-          submitBtn.textContent = originalBtnText;
-        });
-    });
-  }
-
   /* ---------- Init ---------- */
 
   document.addEventListener("DOMContentLoaded", function () {
     initNavbarScroll();
+    initActiveNav();
     initMobileMenu();
     initScrollReveal();
     initNetworks();
     initNodeOrb();
     initTimeline();
     initMagneticButtons();
-    initCursorSpotlight();
-    initContactForm();
   });
 })();
