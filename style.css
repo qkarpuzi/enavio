@@ -191,13 +191,13 @@ button, select, input, textarea { font-family: inherit; }
 /* Wordmark image: height drives size, width follows the intrinsic ratio */
 .logo img {
   display: block;
-  height: 32px;
+  height: 26px;
   width: auto;
   max-width: 100%;
   object-fit: contain;
 }
 
-.logo--footer img { height: 28px; }
+.logo--footer img { height: 24px; }
 
 .nav-links { display: flex; gap: 40px; }
 
@@ -1345,7 +1345,7 @@ section {
 
   .menu-toggle { display: flex; }
   .nav-cta { display: none; }
-  .logo img { height: 26px; }
+  .logo img { height: 22px; }
 
   .capability-row li { padding: 0 16px; }
   .capability-row li:nth-child(3n+1) { padding-left: 0; }
