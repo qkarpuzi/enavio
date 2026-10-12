@@ -183,11 +183,21 @@ button, select, input, textarea { font-family: inherit; }
 }
 
 .logo {
-  font-size: 0.98rem;
-  font-weight: 700;
-  letter-spacing: 0.04em;
+  display: inline-flex;
+  align-items: center;
   flex-shrink: 0;
 }
+
+/* Wordmark image: height drives size, width follows the intrinsic ratio */
+.logo img {
+  display: block;
+  height: 32px;
+  width: auto;
+  max-width: 100%;
+  object-fit: contain;
+}
+
+.logo--footer img { height: 28px; }
 
 .nav-links { display: flex; gap: 40px; }
 
@@ -1335,6 +1345,7 @@ section {
 
   .menu-toggle { display: flex; }
   .nav-cta { display: none; }
+  .logo img { height: 26px; }
 
   .capability-row li { padding: 0 16px; }
   .capability-row li:nth-child(3n+1) { padding-left: 0; }
