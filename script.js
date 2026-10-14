@@ -3,6 +3,7 @@
    Modules:
    - navbar scroll state
    - mobile menu
+   - founder bio "Read more" toggle
    - scroll reveal (IntersectionObserver)
    - hero particle network (mouse-reactive)
    - final CTA ambient canvas
@@ -65,6 +66,22 @@
         nav.classList.remove("open");
         toggle.setAttribute("aria-expanded", "false");
       });
+    });
+  }
+
+  /* ---------- Founder bio "Read more" ---------- */
+
+  function initFounderToggle() {
+    var toggle = document.querySelector(".founder-toggle");
+    if (!toggle) return;
+    var panel = document.getElementById(toggle.getAttribute("aria-controls"));
+    if (!panel) return;
+
+    toggle.addEventListener("click", function () {
+      var isOpen = toggle.getAttribute("aria-expanded") !== "true";
+      panel.classList.toggle("is-open", isOpen);
+      toggle.setAttribute("aria-expanded", String(isOpen));
+      toggle.textContent = isOpen ? "Show less" : "Read more";
     });
   }
 
@@ -481,6 +498,7 @@
     initNavbarScroll();
     initActiveNav();
     initMobileMenu();
+    initFounderToggle();
     initScrollReveal();
     initNetworks();
     initNodeOrb();

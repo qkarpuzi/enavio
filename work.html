@@ -4,11 +4,11 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Work — Enavio AI</title>
-<meta name="description" content="Case studies from Enavio AI: an AI assistant for a 20,000-student university, an OCR document classification system, and an in-progress risk dashboard for construction.">
+<meta name="description" content="Case studies from Enavio AI: an OCR document classification system and an in-progress risk dashboard for construction.">
 <link rel="canonical" href="https://www.enavioai.com/work.html">
 
 <meta property="og:title" content="Work — Enavio AI">
-<meta property="og:description" content="Case studies from Enavio AI: an AI assistant for a 20,000-student university, an OCR document classification system, and an in-progress risk dashboard for construction.">
+<meta property="og:description" content="Case studies from Enavio AI: an OCR document classification system and an in-progress risk dashboard for construction.">
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://www.enavioai.com/work.html">
 
@@ -56,85 +56,11 @@
     <div class="container">
       <span class="page-eyebrow reveal">Work</span>
       <h1 class="reveal">Real systems, not concepts.</h1>
-      <p class="page-lede reveal">Two of these are built and working. One is still in progress. All three are real projects with real code — nothing here is a hypothetical case study.</p>
+      <p class="page-lede reveal">One of these is built and working. The other is still in progress. Both are real projects with real code — nothing here is a hypothetical case study.</p>
     </div>
   </section>
 
-  <!-- ============ CASE 01 — AAB CHATBOT ============ -->
-  <section class="reveal-section" id="aab-chatbot">
-    <div class="container">
-      <div class="case-study">
-        <div class="case-study-head reveal">
-          <div>
-            <span class="case-tag">RAG AI Assistant · Higher Education</span>
-            <h2>An AI assistant for a 20,000-student university</h2>
-          </div>
-          <div class="case-study-links">
-            <span class="proof-badge"><svg width="14" height="14" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M8 0C3.58 0 0 3.58 0 8a8 8 0 0 0 5.47 7.59c.4.07.55-.17.55-.38v-1.33c-2.22.48-2.69-1.07-2.69-1.07-.36-.93-.89-1.17-.89-1.17-.72-.5.06-.49.06-.49.8.06 1.22.82 1.22.82.71 1.22 1.87.87 2.33.66.07-.52.28-.87.5-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.13 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.03 2.2-.82 2.2-.82.44 1.11.16 1.93.08 2.13.51.56.82 1.28.82 2.15 0 3.07-1.87 3.75-3.65 3.94.29.25.54.73.54 1.48v2.2c0 .21.15.46.55.38A8 8 0 0 0 16 8c0-4.42-3.58-8-8-8Z" fill="currentColor"/></svg> <strong>Public code</strong> — verify it yourself</span>
-            <a href="https://github.com/qkarpuzi/aab-chatbot" target="_blank" rel="noopener" class="case-link">View on GitHub →</a>
-          </div>
-        </div>
-
-        <div class="case-study-grid">
-          <div class="case-study-steps reveal">
-            <div class="case-step">
-              <span class="case-step-num">01 — The Challenge</span>
-              <h4>Students and staff need answers general AI can't give</h4>
-              <p>AAB College, the largest non-public university in Kosovo, has its own programs, policies, and institutional information that a general-purpose chatbot simply doesn't know — and will guess at anyway.</p>
-            </div>
-            <div class="case-step">
-              <span class="case-step-num">02 — The System</span>
-              <h4>A retrieval-augmented assistant</h4>
-              <p>An AI assistant that retrieves relevant passages from AAB's actual programs, policies, and institutional documents at answer time, then generates a response grounded in what it retrieved.</p>
-            </div>
-            <div class="case-step">
-              <span class="case-step-num">03 — How It Works</span>
-              <h4>Retrieve first, answer second</h4>
-              <p>A question comes in, relevant institutional documents are retrieved from AAB's records, and the assistant answers using only that retrieved content — rather than recalling from general training data.</p>
-            </div>
-            <div class="case-step">
-              <span class="case-step-num">04 — Technology</span>
-              <h4>RAG, LLMs, and institutional data</h4>
-              <p>Built on retrieval-augmented generation over AAB's own document set, using large language models for the conversational layer.</p>
-              <div class="case-tech-tags">
-                <span>Retrieval-Augmented Generation</span>
-                <span>Large Language Models</span>
-                <span>Institutional Data</span>
-              </div>
-            </div>
-            <div class="case-step">
-              <span class="case-step-num">05 — Status</span>
-              <h4>Built and working</h4>
-              <p>The assistant is built and answering questions grounded in AAB's actual institutional information. Full code is public on GitHub.</p>
-            </div>
-          </div>
-
-          <div class="case-study-visual reveal">
-            <div class="mockup-window">
-              <div class="mockup-bar">
-                <span class="mockup-mark" aria-hidden="true"></span>
-                <span class="mockup-title">AAB AI Assistant</span>
-                <span class="mockup-status">Preview</span>
-              </div>
-              <div class="mockup-body">
-                <div class="mockup-chat-msg is-user">
-                  <span class="mockup-role">User</span>
-                  What are the admission requirements for the Computer Science program?
-                </div>
-                <div class="mockup-chat-msg is-ai">
-                  <span class="mockup-role">AI Assistant — grounded in AAB records</span>
-                  Retrieved from AAB's program documentation, then answered from that source rather than general knowledge.
-                </div>
-              </div>
-            </div>
-            <span class="mockup-caption">Interface demonstration — illustrative conversation, not a captured transcript.</span>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- ============ CASE 02 — DOCUMENT AI ============ -->
+  <!-- ============ CASE 01 — DOCUMENT AI ============ -->
   <section class="reveal-section" id="document-ai">
     <div class="container">
       <div class="case-study">
@@ -205,7 +131,7 @@
     </div>
   </section>
 
-  <!-- ============ CASE 03 — CONSTRUCTAI ============ -->
+  <!-- ============ CASE 02 — CONSTRUCTAI ============ -->
   <section class="reveal-section" id="constructai">
     <div class="container">
       <div class="case-study">
